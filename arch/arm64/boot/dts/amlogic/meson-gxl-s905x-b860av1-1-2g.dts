@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Copyright (c) 2024 taras-filatov, unifreq.
+ */
+
+/dts-v1/;
+
+#include "meson-gxl-s905x-p212.dts"
+
+/ {
+	compatible = "zte,b860av1.1", "amlogic,p212";
+	model = "ZTE B860AV1.1 2GRAM";
+
+	/delete-node/ memory@0;
+
+	memory@0 {
+		device_type = "memory";
+		// reg = <0x0 0x0 0x0 0x40000000>;
+		linux,usable-memory = <0x0 0x100000 0x0 0x70800000>;
+	};
+
+};
+
+&sdio_pwrseq {
+		reset-gpios = <&gpio GPIODV_27 GPIO_ACTIVE_LOW>;
+};
